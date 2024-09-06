@@ -1,0 +1,11 @@
+FROM amazonlinux
+RUN yum update -y && yum install tar gzip java -y
+ADD https://dlcdn.apache.org/tomcat/tomcat-9/v9.0.93/bin/apache-tomcat-9.0.93.tar.gz .
+RUN tar -zxvf apache-tomcat-9.0.93.tar.gz -C /opt/
+WORKDIR /opt/apache-tomcat-9.0.93
+COPY context.xml conf/context.xml
+ADD https://s3-us-west-2.amazonaws.com/studentapi-cit/mysql-connector.jar lib/
+COPY student.war webapps/student.war
+EXPOSE 8080
+ENTRYPOINT [ "bin/catalina.sh"]
+CMD ["run"]
