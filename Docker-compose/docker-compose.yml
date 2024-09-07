@@ -1,14 +1,14 @@
 version:  "3.8"
 services: 
   backendimg:
-    build: /root/3-tier-architecture-using-DockerImages/Backend/
+    build: /home/ec2-user/3-tier-architecture-using-DockerImages/Backend/
     container_name : backend
     ports: 
       - "8080:8080"
     network_mode:
         bridge
   frontendimg:  
-    build:  /root/3-tier-architecture-using-DockerImages/Frontend/
+    build:  /home/ec2-user/3-tier-architecture-using-DockerImages/Frontend/
     container_name: frontend
     ports: 
       - "80:80"
